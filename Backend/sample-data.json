@@ -1,0 +1,64 @@
+{
+  "memories": [
+    {
+      "title": "Our First Date",
+      "description": "The day we met and I knew you were special. Your smile lit up the whole room.",
+      "date": "2024-01-15",
+      "imageUrl": "https://via.placeholder.com/400x400?text=First+Date",
+      "category": "special"
+    },
+    {
+      "title": "Beach Day",
+      "description": "Walking on the beach at sunset, holding hands and talking for hours.",
+      "date": "2024-03-20",
+      "imageUrl": "https://via.placeholder.com/400x400?text=Beach+Day",
+      "category": "adventure"
+    },
+    {
+      "title": "Your Birthday",
+      "description": "Celebrating you and making sure you felt as special as you make me feel every day.",
+      "date": "2024-05-10",
+      "imageUrl": "https://via.placeholder.com/400x400?text=Birthday",
+      "category": "celebration"
+    }
+  ],
+  "dreams": [
+    {
+      "title": "Paris Together",
+      "description": "Walking through the streets of Paris, visiting the Eiffel Tower, and eating croissants at a cute café.",
+      "category": "travel",
+      "icon": "🗼"
+    },
+    {
+      "title": "Our Home",
+      "description": "Creating a cozy home together where we can build our future and make countless memories.",
+      "category": "life",
+      "icon": "🏡"
+    },
+    {
+      "title": "Learn to Dance",
+      "description": "Taking dance lessons together and laughing at our clumsy attempts.",
+      "category": "small",
+      "icon": "💃"
+    },
+    {
+      "title": "Road Trip",
+      "description": "A spontaneous road trip with no plans, just us and the open road.",
+      "category": "travel",
+      "icon": "🚗"
+    },
+    {
+      "title": "Cook Together",
+      "description": "Having weekly cooking dates where we try new recipes and make a mess in the kitchen.",
+      "category": "small",
+      "icon": "👨‍🍳"
+    },
+    {
+      "title": "Grow Old Together",
+      "description": "Being by each other's side through everything life brings us, forever and always.",
+      "category": "life",
+      "icon": "💑"
+    }
+  ]
+}
+

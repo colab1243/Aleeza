@@ -1,0 +1,297 @@
+.guestbook-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fef8e7 0%, #f8f0e3 50%, #f5e6d3 100%);
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.guestbook-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(196, 151, 109, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 115, 85, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.guestbook-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.guestbook-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.message-form {
+  background: linear-gradient(135deg, #fef8e7 0%, #f8f0e3 100%);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow:
+    0 8px 25px rgba(139, 115, 85, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(139, 115, 85, 0.1);
+  margin-bottom: 3rem;
+  border: 2px solid rgba(139, 115, 85, 0.1);
+  position: relative;
+}
+
+.message-form::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 20%;
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(90deg, #c4976d 0%, #d4a574 50%, #c4976d 100%);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.emoji-selector {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.emoji-selector button {
+  font-size: 1.8rem;
+  border: 2px solid transparent;
+  background: rgba(196, 151, 109, 0.1);
+  border-radius: 12px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(139, 115, 85, 0.1);
+}
+
+.emoji-selector button:hover {
+  transform: scale(1.15) rotate(5deg);
+  background: rgba(196, 151, 109, 0.2);
+  box-shadow: 0 4px 15px rgba(139, 115, 85, 0.2);
+}
+
+.emoji-selector button.active {
+  border-color: #c4976d;
+  background: rgba(212, 167, 116, 0.3);
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 4px 15px rgba(196, 151, 109, 0.3);
+}
+
+.message-form textarea {
+  width: 100%;
+  padding: 1.5rem;
+  border: 2px solid rgba(139, 115, 85, 0.2);
+  border-radius: 15px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  resize: vertical;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 2px 4px rgba(139, 115, 85, 0.1);
+  line-height: 1.6;
+}
+
+.message-form textarea:focus {
+  outline: none;
+  border-color: #c4976d;
+  background: white;
+  box-shadow:
+    inset 0 2px 4px rgba(139, 115, 85, 0.1),
+    0 0 0 3px rgba(196, 151, 109, 0.1);
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.char-count {
+  font-family: 'Nunito', sans-serif;
+  color: #a6754f;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.form-footer button {
+  padding: 0.9rem 2.5rem;
+  background: linear-gradient(135deg, #c4976d 0%, #d4a574 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow:
+    0 4px 15px rgba(196, 151, 109, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.form-footer button:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 8px 25px rgba(196, 151, 109, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.form-footer button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.entries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.loading,
+.no-entries {
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  color: #a6754f;
+  padding: 3rem;
+  font-weight: 500;
+}
+
+.entry-card {
+  background: linear-gradient(135deg, #fef8e7 0%, #f8f0e3 100%);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow:
+    0 4px 15px rgba(139, 115, 85, 0.12),
+    0 2px 8px rgba(139, 115, 85, 0.08);
+  display: flex;
+  gap: 1.5rem;
+  transition: all 0.4s ease;
+  animation: entrySlideIn 0.6s ease;
+  position: relative;
+  border: 1px solid rgba(139, 115, 85, 0.1);
+  transform: rotate(-0.3deg);
+}
+
+.entry-card:nth-child(2n) {
+  transform: rotate(0.2deg);
+}
+
+.entry-card:hover {
+  transform: translateY(-5px) translateX(8px) rotate(0deg);
+  box-shadow:
+    0 12px 30px rgba(139, 115, 85, 0.2),
+    0 6px 15px rgba(139, 115, 85, 0.1);
+  z-index: 10;
+}
+
+.entry-emoji {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  animation: emojiFloat 4s ease-in-out infinite;
+  filter: drop-shadow(1px 1px 2px rgba(139, 115, 85, 0.2));
+}
+
+.entry-content {
+  flex: 1;
+}
+
+.entry-message {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  color: #5a4a42;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-weight: 400;
+}
+
+.entry-date {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  color: #a6754f;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Decorative elements */
+.guestbook-container::after {
+  content: '💌 ✉️ 📝 💭';
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  font-size: 1.3rem;
+  color: #c4976d;
+  opacity: 0.3;
+  transform: rotate(20deg);
+  pointer-events: none;
+  line-height: 2;
+}
+
+@keyframes entrySlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotate(-0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(-0.3deg);
+  }
+}
+
+@keyframes emojiFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(10deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .guestbook-container {
+    padding: 2rem 1rem;
+  }
+
+  .message-form {
+    padding: 2rem 1.5rem;
+  }
+
+  .emoji-selector button {
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+  }
+
+  .entry-card {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .entry-emoji {
+    font-size: 2rem;
+  }
+}
+

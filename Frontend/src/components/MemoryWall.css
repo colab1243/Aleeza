@@ -1,0 +1,333 @@
+.memory-wall {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fef8e7 0%, #f8f0e3 50%, #f5e6d3 100%);
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.memory-wall::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(139, 115, 85, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(196, 151, 109, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.memory-wall-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  color: #8b7355;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(255, 248, 220, 0.8);
+  line-height: 0.9;
+}
+
+.section-subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  color: #a6754f;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #c4976d;
+  padding: 4rem;
+  font-family: 'Nunito', sans-serif;
+  font-style: italic;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.memory-card {
+  cursor: pointer;
+  background: white;
+  border: 12px solid white;
+  border-bottom: 40px solid white;
+  box-shadow:
+    0 4px 15px rgba(139, 115, 85, 0.15),
+    0 2px 8px rgba(139, 115, 85, 0.1);
+  position: relative;
+  transition: all 0.4s ease;
+  transform: rotate(-1deg);
+}
+
+.memory-card:nth-child(2n) {
+  transform: rotate(0.5deg);
+}
+
+.memory-card:nth-child(3n) {
+  transform: rotate(-0.3deg);
+}
+
+.memory-card:nth-child(4n) {
+  transform: rotate(0.7deg);
+}
+
+.memory-card:hover {
+  transform: translateY(-8px) scale(1.05) rotate(0deg);
+  box-shadow:
+    0 12px 35px rgba(139, 115, 85, 0.25),
+    0 6px 20px rgba(139, 115, 85, 0.15);
+  z-index: 10;
+}
+
+.memory-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  background: #f8f0e3;
+}
+
+.memory-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  filter: sepia(0.1) contrast(1.05);
+}
+
+.memory-card:hover .memory-image-container img {
+  transform: scale(1.1);
+  filter: sepia(0.05) contrast(1.1) brightness(1.05);
+}
+
+.memory-overlay {
+  position: absolute;
+  bottom: -30px;
+  left: 12px;
+  right: 12px;
+  background: rgba(255, 248, 220, 0.95);
+  padding: 1rem;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  border-radius: 0 0 8px 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.memory-overlay-content h3 {
+  color: #8b7355;
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.memory-overlay-content p {
+  color: #a6754f;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* Polaroid stub */
+.memory-card::after {
+  content: '';
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 12px;
+  background: linear-gradient(135deg, #8b7355 0%, #6b5b47 100%);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.memory-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(139, 115, 85, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: modalFadeIn 0.4s ease;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 15px;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideUp 0.4s ease;
+  box-shadow:
+    0 15px 35px rgba(139, 115, 85, 0.3),
+    0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 8px solid white;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 7px 7px 0 0;
+  filter: sepia(0.05) contrast(1.05);
+}
+
+.modal-info {
+  padding: 2rem;
+  background: linear-gradient(135deg, #fef8e7 0%, #f8f0e3 100%);
+  border-radius: 0 0 7px 7px;
+}
+
+.modal-info h3 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #8b7355;
+  margin-bottom: 0.5rem;
+  line-height: 0.9;
+}
+
+.modal-date {
+  color: #c4976d;
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.modal-description {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #5a4a42;
+  font-weight: 400;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: white;
+  border: 2px solid #c4976d;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(139, 115, 85, 0.2);
+  transition: all 0.3s ease;
+  z-index: 10;
+  color: #c4976d;
+}
+
+.close-button:hover {
+  transform: scale(1.1) rotate(90deg);
+  background: #c4976d;
+  color: white;
+}
+
+/* Floating decorative elements */
+.memory-wall::after {
+  content: '✨ 💕 🌸 💫 ❀ ✿';
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  font-size: 1.2rem;
+  color: #c4976d;
+  opacity: 0.3;
+  transform: rotate(15deg);
+  pointer-events: none;
+  line-height: 2;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .memory-wall {
+    padding: 2rem 1rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .memory-card {
+    border-width: 8px;
+    border-bottom-width: 30px;
+  }
+
+  .memory-card::after {
+    height: 10px;
+  }
+
+  .modal-content {
+    max-width: 100%;
+    margin: 1rem;
+    border-width: 4px;
+  }
+
+  .modal-info h3 {
+    font-size: 2rem;
+  }
+}
+
