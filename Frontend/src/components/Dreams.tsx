@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
-import { db } from '../config/firebase';
+import { supabase } from '../config/supabase';
 import { Dream } from '../types';
 import './Dreams.css';
 
@@ -12,12 +11,20 @@ const Dreams = () => {
   useEffect(() => {
     const fetchDreams = async () => {
       try {
-        const dreamsQuery = query(collection(db, 'dreams'));
-        const snapshot = await getDocs(dreamsQuery);
-        const dreamsData = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
+        const { data, error } = await supabase
+          .from('dreams')
+          .select('*');
+
+        if (error) throw error;
+
+        const dreamsData = data.map(item => ({
+          id: item.id,
+          title: item.title,
+          description: item.description,
+          category: item.category,
+          icon: item.icon
         })) as Dream[];
+
         setDreams(dreamsData);
       } catch (error) {
         console.error('Error fetching dreams:', error);

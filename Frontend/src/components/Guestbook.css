@@ -1,9 +1,17 @@
 .guestbook-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #fef8e7 0%, #f8f0e3 50%, #f5e6d3 100%);
+  background: linear-gradient(135deg, #fff5f5 0%, #ffeef0 25%, #fff0f5 50%, #fef8e7 75%, #fff5f5 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 25s ease infinite;
   padding: 4rem 2rem;
   position: relative;
   overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .guestbook-container::before {
@@ -34,15 +42,16 @@
 }
 
 .message-form {
-  background: linear-gradient(135deg, #fef8e7 0%, #f8f0e3 100%);
+  background: linear-gradient(135deg, #fff5f5 0%, #ffeef0 50%, #fef8e7 100%);
   border-radius: 20px;
   padding: 2.5rem;
   box-shadow:
-    0 8px 25px rgba(139, 115, 85, 0.15),
+    0 8px 25px rgba(255, 182, 193, 0.2),
+    0 0 30px rgba(255, 192, 203, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.8),
-    inset 0 -1px 0 rgba(139, 115, 85, 0.1);
+    inset 0 -1px 0 rgba(255, 182, 193, 0.1);
   margin-bottom: 3rem;
-  border: 2px solid rgba(139, 115, 85, 0.1);
+  border: 2px solid rgba(255, 182, 193, 0.3);
   position: relative;
 }
 
@@ -134,7 +143,7 @@
 
 .form-footer button {
   padding: 0.9rem 2.5rem;
-  background: linear-gradient(135deg, #c4976d 0%, #d4a574 100%);
+  background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, #ff91a4 100%);
   color: white;
   border: none;
   border-radius: 50px;
@@ -144,15 +153,18 @@
   cursor: pointer;
   transition: all 0.4s ease;
   box-shadow:
-    0 4px 15px rgba(196, 151, 109, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    0 4px 15px rgba(255, 182, 193, 0.5),
+    0 0 20px rgba(255, 192, 203, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .form-footer button:hover:not(:disabled) {
   transform: translateY(-3px) scale(1.05);
   box-shadow:
-    0 8px 25px rgba(196, 151, 109, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    0 8px 25px rgba(255, 182, 193, 0.6),
+    0 0 30px rgba(255, 192, 203, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #ff91a4 0%, #ffb6c1 50%, #ffc0cb 100%);
 }
 
 .form-footer button:disabled {
@@ -178,18 +190,19 @@
 }
 
 .entry-card {
-  background: linear-gradient(135deg, #fef8e7 0%, #f8f0e3 100%);
+  background: linear-gradient(135deg, #fff5f5 0%, #ffeef0 50%, #fef8e7 100%);
   border-radius: 15px;
   padding: 2rem;
   box-shadow:
-    0 4px 15px rgba(139, 115, 85, 0.12),
-    0 2px 8px rgba(139, 115, 85, 0.08);
+    0 4px 15px rgba(255, 182, 193, 0.18),
+    0 2px 8px rgba(139, 115, 85, 0.12),
+    0 0 20px rgba(255, 192, 203, 0.1);
   display: flex;
   gap: 1.5rem;
   transition: all 0.4s ease;
   animation: entrySlideIn 0.6s ease;
   position: relative;
-  border: 1px solid rgba(139, 115, 85, 0.1);
+  border: 2px solid rgba(255, 182, 193, 0.25);
   transform: rotate(-0.3deg);
 }
 
@@ -200,8 +213,10 @@
 .entry-card:hover {
   transform: translateY(-5px) translateX(8px) rotate(0deg);
   box-shadow:
-    0 12px 30px rgba(139, 115, 85, 0.2),
-    0 6px 15px rgba(139, 115, 85, 0.1);
+    0 12px 30px rgba(255, 182, 193, 0.3),
+    0 6px 15px rgba(255, 192, 203, 0.2),
+    0 0 30px rgba(255, 182, 193, 0.15);
+  border-color: rgba(255, 182, 193, 0.4);
   z-index: 10;
 }
 

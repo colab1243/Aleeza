@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, addDoc, query, orderBy, getDocs, Timestamp } from 'firebase/firestore';
-import { db } from '../config/firebase';
+import { supabase } from '../config/supabase';
 import { GuestbookEntry } from '../types';
 import './Guestbook.css';
 
@@ -19,16 +18,20 @@ const Guestbook = () => {
 
   const fetchEntries = async () => {
     try {
-      const entriesQuery = query(
-        collection(db, 'guestbook'),
-        orderBy('timestamp', 'desc')
-      );
-      const snapshot = await getDocs(entriesQuery);
-      const entriesData = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-        timestamp: doc.data().timestamp.toDate()
+      const { data, error } = await supabase
+        .from('guestbook')
+        .select('*')
+        .order('timestamp', { ascending: false });
+
+      if (error) throw error;
+
+      const entriesData = data.map(item => ({
+        id: item.id,
+        message: item.message,
+        emoji: item.emoji,
+        timestamp: new Date(item.timestamp)
       })) as GuestbookEntry[];
+
       setEntries(entriesData);
     } catch (error) {
       console.error('Error fetching entries:', error);
@@ -43,11 +46,15 @@ const Guestbook = () => {
 
     setSubmitting(true);
     try {
-      await addDoc(collection(db, 'guestbook'), {
-        message: message.trim(),
-        emoji,
-        timestamp: Timestamp.now()
-      });
+      const { error } = await supabase
+        .from('guestbook')
+        .insert({
+          message: message.trim(),
+          emoji
+        });
+
+      if (error) throw error;
+
       setMessage('');
       await fetchEntries();
     } catch (error) {

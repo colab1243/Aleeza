@@ -1,9 +1,17 @@
 .dreams-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #fef8e7 0%, #f8f0e3 50%, #f5e6d3 100%);
+  background: linear-gradient(135deg, #fff5f5 0%, #ffeef0 25%, #fff0f5 50%, #fef8e7 75%, #fff5f5 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 25s ease infinite;
   padding: 4rem 2rem;
   position: relative;
   overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .dreams-container::before {
@@ -88,17 +96,18 @@
 }
 
 .dream-card {
-  background: linear-gradient(135deg, #fef8e7 0%, #f8f0e3 100%);
+  background: linear-gradient(135deg, #fff5f5 0%, #ffeef0 50%, #fef8e7 100%);
   border-radius: 15px;
   padding: 2.5rem 2rem;
   box-shadow:
-    0 4px 15px rgba(139, 115, 85, 0.12),
-    0 2px 8px rgba(139, 115, 85, 0.08);
+    0 4px 15px rgba(255, 182, 193, 0.2),
+    0 2px 8px rgba(139, 115, 85, 0.12),
+    0 0 20px rgba(255, 192, 203, 0.1);
   transition: all 0.4s ease;
   animation: cardFloatIn 0.8s ease both;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(139, 115, 85, 0.1);
+  border: 2px solid rgba(255, 182, 193, 0.3);
   transform: rotate(-0.5deg);
 }
 
@@ -128,8 +137,10 @@
 .dream-card:hover {
   transform: translateY(-8px) scale(1.03) rotate(0deg);
   box-shadow:
-    0 15px 35px rgba(139, 115, 85, 0.2),
-    0 5px 15px rgba(139, 115, 85, 0.1);
+    0 15px 35px rgba(255, 182, 193, 0.3),
+    0 5px 15px rgba(255, 192, 203, 0.2),
+    0 0 30px rgba(255, 182, 193, 0.15);
+  border-color: rgba(255, 182, 193, 0.5);
   z-index: 10;
 }
 
@@ -165,7 +176,7 @@
 .dream-category {
   display: inline-block;
   padding: 0.6rem 1.2rem;
-  background: linear-gradient(135deg, #c4976d 0%, #d4a574 100%);
+  background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, #ff91a4 100%);
   color: white;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -176,8 +187,10 @@
   bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 2px 8px rgba(139, 115, 85, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 2px 8px rgba(255, 182, 193, 0.4),
+    0 0 15px rgba(255, 192, 203, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .no-dreams {
