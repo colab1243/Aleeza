@@ -102,11 +102,6 @@ const MemoryWall = () => {
         .getPublicUrl(filePath);
 
       console.log('Public URL:', publicUrl);
-      
-      if (!publicUrl) {
-        const manualUrl = `${supabaseUrl}/storage/v1/object/public/Zuz/${filePath}`;
-        console.log('Manual URL:', manualUrl);
-      }
 
       const { data: insertData, error: insertError } = await supabase
         .from('memory')
