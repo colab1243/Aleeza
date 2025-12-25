@@ -5,31 +5,25 @@ Get your romantic website up and running in minutes!
 ## Prerequisites
 
 - Node.js installed (v16 or higher)
-- A Firebase account (free)
+- A Supabase account (free)
 
 ## Fast Setup (5 minutes)
 
-### 1. Firebase Setup (2 minutes)
+### 1. Supabase Setup (2 minutes)
 
-1. Go to [https://console.firebase.google.com](https://console.firebase.google.com)
+1. Go to [https://supabase.com](https://supabase.com)
 2. Create a new project
-3. Enable **Firestore Database** (test mode)
-4. Enable **Storage** (test mode)
-5. Add a web app and copy the config
+3. Create database tables: `memory`, `dreams`, `guestbook`
+4. Create a storage bucket named `Zuz` (or update the code to match your bucket name)
+5. Get your project URL and anon key from Settings → API
 
 ### 2. Configure Frontend (1 minute)
 
-Open `Frontend/src/config/firebase.ts` and replace with your Firebase config:
+Open `Frontend/src/config/supabase.ts` and add your Supabase credentials:
 
 ```typescript
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
+const supabaseUrl = 'YOUR_SUPABASE_URL';
+const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY';
 ```
 
 ### 3. Run the Website (1 minute)
@@ -42,35 +36,25 @@ npm run dev
 
 Open [http://localhost:5173](http://localhost:5173) 🎉
 
-### 4. Add Your Content (Later)
+### 4. Add Your Content
 
-1. **Upload photos** to Firebase Storage
-2. **Add memories** to Firestore `memories` collection
-3. **Add dreams** to Firestore `dreams` collection
-4. **Customize countdown** in `Frontend/src/App.tsx`
+1. **Upload photos** directly from the website using the "Add Memory" button
+2. **Add dreams** via Supabase dashboard or create an admin interface
+3. **Customize countdown** in `Frontend/src/components/App.tsx`
 
 ## What You Get
 
 ✨ **Countdown Timer** - Counts down to your special date
-📸 **Memory Wall** - Beautiful photo gallery
+📸 **Memory Wall** - Beautiful photo gallery with upload functionality
 💭 **Dreams Section** - Your future plans together
 💌 **Guestbook** - Interactive message board
 
 ## Next Steps
 
-- Read `README.md` for detailed instructions
-- Check `Backend/FIREBASE-SETUP.md` for Firebase details
 - Customize colors and content to your liking
-- Deploy to make it live!
-
-## Need Help?
-
-Check the detailed guides:
-- `README.md` - Complete documentation
-- `Backend/FIREBASE-SETUP.md` - Firebase configuration
-- `Backend/sample-data.json` - Example data structure
+- Deploy to Netlify or Cloudflare Pages
+- Add a custom domain
 
 ---
 
 Made with ❤️
-

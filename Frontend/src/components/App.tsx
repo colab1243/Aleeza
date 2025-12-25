@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import Countdown from './components/Countdown';
-import MemoryWall from './components/MemoryWall';
-import Dreams from './components/Dreams';
-import Guestbook from './components/Guestbook';
+import Navigation from './Navigation';
+import Countdown from './Countdown';
+import MemoryWall from './MemoryWall';
+import Guestbook from './Guestbook';
 import './App.css';
 
 function App() {
-  const targetDate = new Date('2025-12-31');
-  const countdownTitle = "Until Forever";
+  const targetDate = new Date('2026-11-01');
+  const countdownTitle = "Our Anniversary";
+  
 
   return (
     <Router>
@@ -30,7 +30,6 @@ function App() {
               element={<Countdown targetDate={targetDate} title={countdownTitle} />}
             />
             <Route path="/memories" element={<MemoryWall />} />
-            <Route path="/dreams" element={<Dreams />} />
             <Route path="/guestbook" element={<Guestbook />} />
           </Routes>
         </main>

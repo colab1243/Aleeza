@@ -30,13 +30,6 @@ const Navigation = () => {
             <span className="nav-text">Memories</span>
           </Link>
           <Link 
-            to="/dreams" 
-            className={`nav-link ${isActive('/dreams') ? 'active' : ''}`}
-          >
-            <span className="nav-icon">✨</span>
-            <span className="nav-text">Dreams</span>
-          </Link>
-          <Link 
             to="/guestbook" 
             className={`nav-link ${isActive('/guestbook') ? 'active' : ''}`}
           >
